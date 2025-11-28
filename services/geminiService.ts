@@ -42,6 +42,7 @@ const generatePrompt = (category: Category, region: Region, keywords?: string): 
 
     ###ITEM_START###
     TITLE: [Insert concise title here]
+    LINK: [Insert the direct URL to the source article/video. If unavailable, leave empty]
     SUMMARY: [Insert a 2-sentence summary of the event or content]
     PLATFORM: [Source platform name, e.g., Bilibili, arXiv, TechCrunch]
     TAGS: [Tag1], [Tag2], [Tag3]
@@ -87,6 +88,7 @@ export const fetchTrends = async (category: Category, region: Region, keywords?:
       const itemContent = match[1];
       
       const titleMatch = itemContent.match(/TITLE:\s*(.*)/);
+      const linkMatch = itemContent.match(/LINK:\s*(.*)/);
       const summaryMatch = itemContent.match(/SUMMARY:\s*(.*)/);
       const platformMatch = itemContent.match(/PLATFORM:\s*(.*)/);
       const tagsMatch = itemContent.match(/TAGS:\s*(.*)/);
@@ -97,6 +99,7 @@ export const fetchTrends = async (category: Category, region: Region, keywords?:
           title: titleMatch[1].trim(),
           summary: summaryMatch[1].trim(),
           platform: platformMatch ? platformMatch[1].trim() : 'Web',
+          url: linkMatch ? linkMatch[1].trim() : undefined,
           tags: tagsMatch 
             ? tagsMatch[1].split(/,|，/).map(t => t.trim()).filter(t => t.length > 0) 
             : ['AI', 'Trend'],

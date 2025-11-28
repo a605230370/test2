@@ -8,6 +8,7 @@ export interface TrendItem {
   tags: string[];
   score?: number; // Calculated relevance score
   platform?: string; // e.g., "YouTube", "WeChat"
+  url?: string; // Link to the source
 }
 
 export interface GroundingSource {
