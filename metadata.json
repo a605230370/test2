@@ -1,0 +1,5 @@
+{
+  "name": "Copy of AI 趋势哨兵 (AI Trend Sentinel)",
+  "description": "基于 Gemini 搜索引擎的 AI 每日热点监控平台。自动聚合全球技术动态、商业案例及博主观点。",
+  "requestFramePermissions": []
+}
